@@ -83,9 +83,21 @@ export default function Home() {
               <div className="absolute -right-2 -top-6 h-40 w-40 rounded-full bg-sun md:h-52 md:w-52" aria-hidden />
               <div className="absolute -bottom-4 -left-3 h-36 w-44 rounded-[45%_55%_60%_40%] bg-sky" aria-hidden />
               <div className="card relative aspect-[4/5] overflow-hidden !rounded-t-[999px] bg-white">
-                <Image src={asset("/img/festa-das-cores.webp")} alt="Crianças na Festa das Cores do Vila Raposa" fill priority sizes="(min-width: 768px) 480px, 100vw" className="object-cover" />
+                {/* Reel do Instagram (berçário com balões), recortado e comprimido, sem áudio */}
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  src={asset("/video/bercario-baloes.mp4")}
+                  poster={asset("/img/bercario-baloes-poster.webp")}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-label="Bebês do berçário brincando com balões"
+                />
               </div>
-              <span className="tag absolute left-1 top-1/3 -rotate-12 bg-mint-soft !text-[0.8rem] md:-left-6">Turmas reduzidas</span>
+              <span className="tag absolute left-1 top-1/3 -rotate-12 bg-mint-soft !text-[0.85rem] !normal-case !tracking-normal md:-left-6">
+                Cada criança é única 💛
+              </span>
               <span className="tag absolute -right-1 top-10 rotate-6 bg-white !text-[0.8rem] md:-right-4">⏰ 6h às 19h</span>
               <div className="float absolute -bottom-6 right-6 h-24 w-24 overflow-hidden rounded-full border-2 border-ink bg-white md:h-28 md:w-28">
                 <Image src={asset("/img/raposa.webp")} alt="Raposinha, mascote do Vila Raposa" fill sizes="112px" className="object-cover object-top" />
