@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* Paleta do layout de referência, com o amarelo e o marrom do uniforme Vila Raposa */
+@theme inline {
+  --color-cream: #fff6e5;
+  --color-ink: #231f4b; /* contornos e títulos */
+  --color-cocoa: #4a2c1a; /* marrom do uniforme */
+  --color-fox: #f07f23; /* laranja da raposa */
+  --color-sun: #ffc93c;
+  --color-sun-soft: #ffedb8;
+  --color-coral: #ff6f61;
+  --color-coral-soft: #ffd6cf;
+  --color-sky: #4db6f7;
+  --color-sky-soft: #cfecff;
+  --color-mint: #3ecf9e;
+  --color-mint-soft: #cbf5e5;
+  --color-muted: #5b5878;
+  --font-sans: var(--font-nunito), "Nunito", system-ui, sans-serif;
+  --font-display: var(--font-fredoka), "Fredoka", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-nunito), "Nunito", system-ui, sans-serif;
+}
+
+section[id] {
+  scroll-margin-top: 6.5rem;
+}
+
+.font-display {
+  font-family: var(--font-fredoka), "Fredoka", system-ui, sans-serif;
+}
+
+.t-hero {
+  font-family: var(--font-fredoka), "Fredoka", system-ui, sans-serif;
+  font-size: clamp(2.6rem, 5.4vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.t-h2 {
+  font-family: var(--font-fredoka), "Fredoka", system-ui, sans-serif;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.t-h3 {
+  font-family: var(--font-fredoka), "Fredoka", system-ui, sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+@layer components {
+  /* Cartão "neo-brutalista": contorno escuro e sombra deslocada */
+  .card {
+    border: 2px solid var(--color-ink);
+    border-radius: 1.5rem;
+    box-shadow: 5px 5px 0 var(--color-ink);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    font-weight: 800;
+    font-size: 0.95rem;
+    box-shadow: 3px 3px 0 var(--color-ink);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--color-ink);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 0 var(--color-ink);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+}
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .float {
+    animation: none;
+  }
+}
